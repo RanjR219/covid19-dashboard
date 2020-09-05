@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CountryPicker.css";
-import { NativeSelect, FormControl } from "@material-ui/core";
+import { FormControl } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 function CountryPicker(props) {
   const [countryList, setCountryList] = useState([]);

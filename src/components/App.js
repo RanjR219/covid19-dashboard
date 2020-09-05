@@ -27,7 +27,7 @@ function App() {
       <div>
         <AppBar position="static">
           <Toolbar variant="dense">
-            <Typography>Photos</Typography>
+            <Typography>COVID19 DASHBOARD</Typography>
           </Toolbar>
         </AppBar>
         <div className="container">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Cards.css";
 import Grid from "@material-ui/core/Grid";
 import {
@@ -9,6 +9,16 @@ import {
 } from "@material-ui/core";
 
 function Cards() {
+  const [stats, setStats] = useState({});
+
+  React.useEffect(() => {
+    fetch(`https://covid19-ra-api.herokuapp.com/status`)
+      .then((results) => results.json())
+      .then((response) => {
+        setStats(response);
+      });
+  }, []);
+
   return (
     <Grid item xs={3}>
       <Grid container spacing={4}>
@@ -18,6 +28,7 @@ function Cards() {
               <CardContent>
                 <Typography>Confirmed</Typography>
                 <Typography>
+                  {stats.confirmed}
                   {/* {modify.confirmed.value} */}
                   {/* {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>
@@ -31,6 +42,7 @@ function Cards() {
               <CardContent>
                 <Typography>Recovered</Typography>
                 <Typography>
+                  {stats.recovered}
                   {/* {modify.recovered.value}
                   {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>
@@ -46,6 +58,7 @@ function Cards() {
                   deaths
                 </Typography>
                 <Typography variant="body2" component="p">
+                  {stats.death}
                   {/* {modify.deaths.value}
                   {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>

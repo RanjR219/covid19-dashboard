@@ -32,10 +32,10 @@ function App() {
         </AppBar>
         <div className="container">
           <Grid container spacing={1}>
-            <Grid item xs={5}>
+            <Grid item md={5}>
               <CountryPicker onchoose={handleChoose} />
             </Grid>
-            <Grid item xs={9}>
+            <Grid item md={9} xs={12}>
               <ChartCountry country={chosenCountry} />
             </Grid>
             <Cards country={chosenCountry} />

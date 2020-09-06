@@ -30,13 +30,15 @@ function Cards(props) {
   }, [props.country]);
 
   return (
-    <Grid item xs={3}>
+    <Grid item md={3} xs={12}>
       <Grid container spacing={4}>
-        <Grid item xs={12}>
+        <Grid item md={12} xs={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>
-                <Typography>Confirmed</Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Confirmed
+                </Typography>
                 <Typography>
                   {stats.confirmed}
                   <div>last updated: {stats.lastUpdate}</div>
@@ -47,11 +49,13 @@ function Cards(props) {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item md={12} xs={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>
-                <Typography>Recovered</Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Recovered
+                </Typography>
                 <Typography>
                   {stats.recovered}
                   <div>last updated: {stats.lastUpdate}</div>
@@ -62,12 +66,12 @@ function Cards(props) {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item md={12} xs={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  deaths
+                  Deaths
                 </Typography>
                 <Typography component="p">
                   {stats.death}

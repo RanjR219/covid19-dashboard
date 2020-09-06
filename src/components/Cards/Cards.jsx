@@ -30,9 +30,9 @@ function Cards(props) {
   }, [props.country]);
 
   return (
-    <Grid item md={3} xs={12}>
+    <Grid item md={3} xs={12} sm={12}>
       <Grid container spacing={4}>
-        <Grid item md={12} xs={4}>
+        <Grid item md={12} xs={4} sm={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>
@@ -49,7 +49,7 @@ function Cards(props) {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={12} xs={4}>
+        <Grid item md={12} xs={4} sm={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>
@@ -66,7 +66,7 @@ function Cards(props) {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={12} xs={4}>
+        <Grid item md={12} xs={4} sm={4}>
           <Card className="card">
             <CardActionArea>
               <CardContent>

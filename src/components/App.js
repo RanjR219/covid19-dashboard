@@ -35,7 +35,7 @@ function App() {
             <Grid item md={5}>
               <CountryPicker onchoose={handleChoose} />
             </Grid>
-            <Grid item md={9} xs={12}>
+            <Grid item md={9} xs={12} sm={12}>
               <ChartCountry country={chosenCountry} />
             </Grid>
             <Cards country={chosenCountry} />

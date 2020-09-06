@@ -38,7 +38,7 @@ function App() {
             <Grid item xs={9}>
               <ChartCountry country={chosenCountry} />
             </Grid>
-            <Cards />
+            <Cards country={chosenCountry} />
           </Grid>
         </div>
       </div>

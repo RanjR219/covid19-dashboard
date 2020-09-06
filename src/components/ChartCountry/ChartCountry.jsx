@@ -26,6 +26,7 @@ function ChartCountry(props) {
     <Line
       data={{
         labels: reports.map((date) => date.date),
+
         datasets: [
           {
             data: reports.map((confirmeddata) => confirmeddata.confirmed),

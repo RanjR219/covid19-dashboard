@@ -8,16 +8,26 @@ import {
   Typography,
 } from "@material-ui/core";
 
-function Cards() {
+function Cards(props) {
   const [stats, setStats] = useState({});
 
   React.useEffect(() => {
-    fetch(`https://covid19-ra-api.herokuapp.com/status`)
-      .then((results) => results.json())
-      .then((response) => {
-        setStats(response);
-      });
-  }, []);
+    if (props.country !== "") {
+      fetch(`https://pomber.github.io/covid19/timeseries.json`)
+        .then((results) => results.json())
+        .then((response) => {
+          console.log(response[props.country].slice(-1)[0]);
+          const modified = {
+            confirmed: response[props.country].slice(-1)[0].confirmed,
+            recovered: response[props.country].slice(-1)[0].recovered,
+            death: response[props.country].slice(-1)[0].deaths,
+            lastUpdate: response[props.country].slice(-1)[0].date,
+          };
+
+          setStats(modified);
+        });
+    }
+  }, [props.country]);
 
   return (
     <Grid item xs={3}>
@@ -29,6 +39,7 @@ function Cards() {
                 <Typography>Confirmed</Typography>
                 <Typography>
                   {stats.confirmed}
+                  <div>last updated: {stats.lastUpdate}</div>
                   {/* {modify.confirmed.value} */}
                   {/* {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>
@@ -43,6 +54,7 @@ function Cards() {
                 <Typography>Recovered</Typography>
                 <Typography>
                   {stats.recovered}
+                  <div>last updated: {stats.lastUpdate}</div>
                   {/* {modify.recovered.value}
                   {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>
@@ -57,8 +69,9 @@ function Cards() {
                 <Typography gutterBottom variant="h5" component="h2">
                   deaths
                 </Typography>
-                <Typography variant="body2" component="p">
+                <Typography component="p">
                   {stats.death}
+                  <div>last updated: {stats.lastUpdate}</div>
                   {/* {modify.deaths.value}
                   {new Date(modify.lastUpdate).toDateString()} */}
                 </Typography>

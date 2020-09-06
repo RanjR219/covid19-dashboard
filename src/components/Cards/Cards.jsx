@@ -36,7 +36,7 @@ function Cards(props) {
             confirmed: response.confirmed.value,
             recovered: response.recovered.value,
             death: response.deaths.value,
-            lastUpdate: response.lastUpdate,
+            lastUpdate: response.lastUpdate.slice(0, 10),
           });
           // console.log(modify);
         });

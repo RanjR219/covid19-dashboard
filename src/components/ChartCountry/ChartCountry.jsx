@@ -11,6 +11,7 @@ function ChartCountry(props) {
         .then((response) => {
           const modifiedData = response[props.country].map((reports) => ({
             confirmed: reports.confirmed,
+            recovered: reports.recovered,
             deaths: reports.deaths,
             date: reports.date,
           }));
@@ -32,6 +33,12 @@ function ChartCountry(props) {
             data: reports.map((confirmeddata) => confirmeddata.confirmed),
             label: "Infected",
             borderColor: "#3333ff",
+            fill: true,
+          },
+          {
+            data: reports.map((recovereddata) => recovereddata.recovered),
+            label: "recovered",
+            borderColor: "green",
             fill: true,
           },
           {

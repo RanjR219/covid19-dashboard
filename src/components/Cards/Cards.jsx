@@ -26,6 +26,20 @@ function Cards(props) {
 
           setStats(modified);
         });
+    } else {
+      fetch("https://covid19.mathdro.id/api")
+        .then((results) => results.json())
+        .then((response) => {
+          // console.log(response);
+
+          setStats({
+            confirmed: response.confirmed.value,
+            recovered: response.recovered.value,
+            death: response.deaths.value,
+            lastUpdate: response.lastUpdate,
+          });
+          // console.log(modify);
+        });
     }
   }, [props.country]);
 
@@ -36,8 +50,12 @@ function Cards(props) {
           <Card className="card">
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Confirmed
+                <Typography>
+                  {props.country === "" ? (
+                    <h2>Confirmed Globally</h2>
+                  ) : (
+                    <h2>Confirmed</h2>
+                  )}
                 </Typography>
                 <Typography>
                   {stats.confirmed}
@@ -53,8 +71,12 @@ function Cards(props) {
           <Card className="card">
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Recovered
+                <Typography>
+                  {props.country === "" ? (
+                    <h2>Recovered Globally</h2>
+                  ) : (
+                    <h2>Recovered</h2>
+                  )}
                 </Typography>
                 <Typography>
                   {stats.recovered}
@@ -70,8 +92,12 @@ function Cards(props) {
           <Card className="card">
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Deaths
+                <Typography>
+                  {props.country === "" ? (
+                    <h2>Deaths Globally</h2>
+                  ) : (
+                    <h2>Deaths</h2>
+                  )}
                 </Typography>
                 <Typography component="p">
                   {stats.death}
